@@ -48,7 +48,6 @@ public class Server_multiple_client {
                     }
                 }).start();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
