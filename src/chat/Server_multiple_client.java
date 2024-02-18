@@ -27,7 +27,7 @@ public class Server_multiple_client {
                     inFromClients[i] = new BufferedReader(new InputStreamReader(clientSockets[i].getInputStream()));
                     outToClients[i] = new PrintWriter(clientSockets[i].getOutputStream(), true);
                 }
-
+                Chat_database.fetchData();
                 // Start threads to forward messages using arrays
                 for (int i = 0; i < 3; i++) {
                     int t = i;

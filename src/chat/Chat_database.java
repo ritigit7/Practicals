@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class Chat_database {
         public static void main(String[] args) {
                 // insertData(7, "sdflksdf ", 0, 0, 1);
-                // fetchData();
+                fetchData();
                 System.out.println(lastOrder());
 
         }
@@ -91,15 +91,20 @@ public class Chat_database {
                         String messages;
                         int client_1;
                         int client_2;
-                        int client_3;
+                        // int client_3;
                         while (resultSet.next()) {
                                 id = resultSet.getInt("id");
                                 messages = resultSet.getString("messages").trim();
                                 client_1 = resultSet.getInt("client_1");
                                 client_2 = resultSet.getInt("client_2");
-                                client_3 = resultSet.getInt("client_3");
-                                System.out.println("id:" + id + " messages:" + messages + " client_1:" + client_1
-                                                + " client_2:" + client_2 + " client_3:" + client_3);
+                                // client_3 = resultSet.getInt("client_3");
+                                if (client_1 == 1) {
+                                        System.out.println("id:" + id + " Client_1:" + messages);
+                                } else if (client_2 == 1) {
+                                        System.out.println("id:" + id + " Client_2:" + messages);
+                                } else {
+                                        System.out.println("id:" + id + " Client_3:" + messages);
+                                }
                         }
                         resultSet.close();
                         statement.close();
