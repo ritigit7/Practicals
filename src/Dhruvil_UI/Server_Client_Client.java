@@ -1,4 +1,4 @@
-package chat;
+package Dhruvil_UI;
 
 import java.io.*;
 import java.net.*;
