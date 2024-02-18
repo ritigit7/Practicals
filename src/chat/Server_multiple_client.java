@@ -2,8 +2,10 @@ package chat;
 
 import java.io.*;
 import java.net.*;
+import chat.Chat_database;
 
 public class Server_multiple_client {
+
     public static void main(String[] args) {
         try {
             // Create a server socket
@@ -38,6 +40,9 @@ public class Server_multiple_client {
                     try {
                         String message;
                         while ((message = inFromClients[t].readLine()) != null) {
+                            // Chat_database ob = new Chat_database();
+                            int k = Chat_database.lastOrder() + 1;
+                            Chat_database.insertData(k++, message, 1, 0, 0);
                             // Forward message to both other clients
                             for (int j = 0; j < 2; j++) {
                                 outToClients[otherClients[j]].println(message);
