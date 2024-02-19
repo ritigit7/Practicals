@@ -43,9 +43,9 @@ public class Server_multiple_client {
                                 int k = Chat_database.lastOrder() + 1;
                                 String[] msg = message.split(":");
                                 int[] n = new int[3];
-                                if (msg[0].equals("client_1")) {
+                                if (msg[0].equals("Vatsal")) {
                                     n[0] = 1;
-                                } else if (msg[0].equals("client_2")) {
+                                } else if (msg[0].equals("Dhruvil")) {
                                     n[1] = 1;
                                 } else {
                                     n[2] = 1;

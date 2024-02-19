@@ -27,7 +27,7 @@ public class Client {
                 // Read messages from the console and send them to the server
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 String[] message = new String[2];
-                message[0] = "client_1";
+                message[0] = "Vatsal";
                 while ((message[1] = reader.readLine()) != null) {
                     outToServer.println(message[0] + ":" + message[1]);
                 }
