@@ -1,16 +1,14 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
-// import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 public class Server {
     public static void main(String[] args) throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(1234)) {
-            System.out.println("Server started on port 1234");
+        try (ServerSocket serverSocket = new ServerSocket(5000)) {
+            System.out.println("Server started on port 5000");
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
@@ -41,14 +39,14 @@ class ClientHandler extends Thread {
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Received message from client: " + inputLine);
 
-                try (// Echo the message back to the client
-                        Scanner sc = new Scanner(System.in)) {
-                    String str = sc.nextLine();
-                    out.println("Server received: " + inputLine);
+                // try (// Echo the message back to the client
+                // Scanner sc = new Scanner(System.in)) {
+                // String str = sc.nextLine();
+                // out.println("Server received: " + inputLine);
 
-                    // String str2 = "";
-                    out.println("Server received: " + str);
-                }
+                // // String str2 = "";
+                // out.println("Server received: " + str);
+                // }
             }
 
             // Close the streams and socket

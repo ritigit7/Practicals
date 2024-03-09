@@ -1,33 +1,38 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
 
 public class Client {
+    public static void main(String[] args) {
+        try {
+            try (// Connect to the server
+                    Socket socket = new Socket("localhost", 5000)) {
+                // Create input and output streams
+                BufferedReader inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter outToServer = new PrintWriter(socket.getOutputStream(), true);
 
-    public static void main(String[] args) throws IOException {
+                // Create a thread to read messages from the server
+                new Thread(() -> {
+                    try {
+                        String message;
+                        while ((message = inFromServer.readLine()) != null) {
+                            System.out.println(message);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
 
-        try (Socket Socket = new Socket("192.168.149.211", 1234)) {
-            System.out.println("Connected to server on port " + Socket.getLocalPort());
-            while (true) {
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(Socket.getInputStream()));
-                PrintWriter out = new PrintWriter(Socket.getOutputStream(), true);
-                try (Scanner input = new Scanner(System.in)) {
-                    System.out.println("Enter a message to send to server: ");
-                    String message = input.nextLine();
-                    out.println(message);
+                // Read messages from the console and send them to the server
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                String[] message = new String[2];
+                message[0] = "Vatsal";
+                while ((message[1] = reader.readLine()) != null) {
+                    outToServer.println(message[0] + ":" + message[1]);
                 }
-                while (in.readLine() != null) {
-                    System.out.println(in.readLine());
-                }
-                // System.out.println("massage sent to server: "+ message);
-
-                // int charcount = Integer.parseInt(in.readLine());
-                // System.out.println("Server Response: " + charcount);
-
-                // Socket.close();
             }
-        }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

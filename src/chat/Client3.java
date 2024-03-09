@@ -7,7 +7,7 @@ public class Client3 {
     public static void main(String[] args) {
         try {
             try (// Connect to the server
-                    Socket socket = new Socket("localhost", 5000)) {
+                    Socket socket = new Socket("192.168.1.42", 5000)) {
                 // Create input and output streams
                 BufferedReader inFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter outToServer = new PrintWriter(socket.getOutputStream(), true);
