@@ -9,12 +9,12 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CharacterCountingServer {
+public class MainServer {
     private Set<ClientHandler> clientHandlers = new HashSet<>();
 
     public static void main(String[] args) {
-        CharacterCountingServer server = new CharacterCountingServer();
-        server.start(6666);
+        MainServer server = new MainServer();
+        server.start(5000);
     }
 
     public void start(int port) {
@@ -48,8 +48,7 @@ public class CharacterCountingServer {
                 out = new PrintWriter(socket.getOutputStream(), true);
                 String message;
                 while ((message = in.readLine()) != null) {
-                    int characterCount = message.length();
-                    out.println("Number of characters in the message: " + characterCount);
+                    out.println("msg: " + message);
                 }
             } catch (IOException e) {
                 System.err.println("Error in client handler: " + e.getMessage());
