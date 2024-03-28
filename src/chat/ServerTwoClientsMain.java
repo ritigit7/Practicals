@@ -30,11 +30,12 @@ public class ServerTwoClientsMain {
 
     public void forwardMessage(String message, ClientHandler sender, ClientHandler receiver) {
         for (ClientHandler clientHandler : clientHandlers) {
-            if (clientHandler != sender && clientHandler != receiver) {
+            if (clientHandler != sender) {
                 clientHandler.sendMessage(message);
             }
         }
     }
+    
 
     private class ClientHandler implements Runnable {
         private Socket socket;

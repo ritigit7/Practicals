@@ -1,11 +1,20 @@
+
 // import java.util.HashMap;
 // import java.util.Map.Entry;
+import java.net.*;;
 
 public class Temp {
     public static String str = "ritik";
 
     public static void main(String[] args) {
-        System.out.println(str);
+        // System.out.println(str);
+        try {
+            String hostName = "www.geeksforgeeks.org";
+            InetAddress ipAddress = InetAddress.getByName(hostName);
+            System.out.println("IP Address for " + hostName + ": " + ipAddress.getHostAddress());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
     // public static void main(String[] args) throws ClassNotFoundException {
 

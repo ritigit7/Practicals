@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
 
 public class CharacterCountingClient {
     public static void main(String[] args) {
-        String ip = "localhost";
-        int port = 6666;
+        String ip = "192.168.1.42";
+        int port = 5000;
         try {
             try (Socket socket = new Socket(ip, port)) {
                 System.out.println("Connected to server");
